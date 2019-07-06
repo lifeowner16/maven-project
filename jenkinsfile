@@ -2,12 +2,14 @@ pipeline {
     agent any
 
     stages {
+
         stage ('SCM Checkout') {
-            
+
             steps {
-                git 'https://github.com/lifeowner16/maven-project'
+              git 'https://github.com/lifeowner16/maven-project'
                 }
             }
+
         stage ('Compile Stage') {
 
             steps {
@@ -27,11 +29,27 @@ pipeline {
             }
         }
 
+        stage ('Package Stage') {
+            steps {
+                withMaven(maven : 'maven') {
+                    sh 'mvn package'
+                }
+            }
+        }
+
+        stage ('verify Stage') {
+            steps {
+                withMaven(maven : 'maven') {
+                    sh 'mvn verify'
+                }
+            }
+        }
+        
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'maven') {
                     sh 'mvn deploy'
-                }      
+                }
             }
         }
     }
