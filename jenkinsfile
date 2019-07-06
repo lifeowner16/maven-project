@@ -3,9 +3,11 @@ pipeline {
 
     stages {
         stage ('SCM Checkout') {
-              git 'https://github.com/lifeowner16/maven-project'
+            
+            steps {
+                git 'https://github.com/lifeowner16/maven-project'
                 }
-
+            }
         stage ('Compile Stage') {
 
             steps {
