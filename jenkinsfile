@@ -1,17 +1,15 @@
- Pipeline {
+Pipeline{
      agent any
-     stages {
+     stages{
          stage('clone my code'){
-           git 'https://github.com/lifeowner16/maven-project'
-            }
-         stage('complie my code'){
-           
+         git 'https://github.com/lifeowner16/maven-project'
+           }
+         stage('complie my code'){         
            steps {
               withMaven(maven : 'maven') {
-                    sh 'sh mvn complile'
+               sh 'sh mvn complile'
                  }
-                 }
-                 }
-                 }
-                 }   
-    
+               }
+            }
+          }
+        }
