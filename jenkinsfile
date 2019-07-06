@@ -9,9 +9,9 @@
            steps {
               withMaven(maven : 'maven') {
                     sh 'sh mvn complile'
-                    }
                  }
-           }
-           }
-           }   
+                 }
+                 }
+                 }
+                 }   
     
