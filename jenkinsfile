@@ -45,7 +45,7 @@ pipeline {
             }
         }
 
-        stage ('Test Git') {
+        stage ('Test ssh') {
             steps {
               sshagent(credentials : ['tomcatssh']) {
                   sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.47.128:/var/lib/tomcat/webapps'
