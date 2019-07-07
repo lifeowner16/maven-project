@@ -45,12 +45,9 @@ pipeline {
             }
         }
         
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven') {
-                    sh 'mvn deploy'
-                }
-            }
+        
+        sshagent(['tomcatssh']) {
+              sh 'scp -o StricthostkeyChecking=no -l cloudbees 18.185.135.61 uname -a'
         }
     }
 }
